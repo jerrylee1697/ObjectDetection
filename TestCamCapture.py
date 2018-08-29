@@ -1,47 +1,47 @@
-# import numpy as np
-# import cv2
-
-# cap = cv2.VideoCapture(0)
-
-# # Define the codec and create VideoWriter object
-# fourcc = cv2.VideoWriter_fourcc(*'XVID')
-# out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
-
-# while(cap.isOpened()):
-#     ret, frame = cap.read()
-#     if ret==True:
-#         frame = cv2.flip(frame,0)
-
-#         # write the flipped frame
-#         out.write(frame)
-
-#         cv2.imshow('frame',frame)
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break
-#     else:
-#         break
-
-# # Release everything if job is finished
-# cap.release()
-# out.release()
-# cv2.destroyAllWindows()
-
+import numpy as np
 import cv2
 
 cap = cv2.VideoCapture(0)
 
-# Check if the webcam is opened correctly
-if not cap.isOpened():
-    raise IOError("Cannot open webcam")
+# Define the codec and create VideoWriter object
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
 
-while True:
+while(cap.isOpened()):
     ret, frame = cap.read()
-    frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-    cv2.imshow('Input', frame)
+    if ret==True:
+        frame = cv2.flip(frame,0)
 
-    c = cv2.waitKey(1)
-    if c == 27:
+        # write the flipped frame
+        out.write(frame)
+
+        cv2.imshow('frame',frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    else:
         break
 
+# Release everything if job is finished
 cap.release()
+out.release()
 cv2.destroyAllWindows()
+
+# import cv2
+
+# cap = cv2.VideoCapture(0)
+
+# # Check if the webcam is opened correctly
+# if not cap.isOpened():
+#     raise IOError("Cannot open webcam")
+
+# while True:
+#     ret, frame = cap.read()
+#     frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
+#     cv2.imshow('Input', frame)
+
+#     c = cv2.waitKey(1)
+#     if c == 27:
+#         break
+
+# cap.release()
+# cv2.destroyAllWindows()
